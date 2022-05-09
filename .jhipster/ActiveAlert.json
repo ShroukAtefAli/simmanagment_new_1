@@ -1,0 +1,72 @@
+{
+  "applications": "*",
+  "changelogDate": "20220509131724",
+  "clientRootFolder": "simManagement",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "active_alert",
+  "fields": [
+    {
+      "fieldName": "activeAlertId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertCapacity",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertCustomerId",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertDialNumber",
+      "fieldType": "Long",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertSmsMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activeAlertEmailMessage",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activeAlertSmsMessageActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activeAlertEmailMessageActive",
+      "fieldType": "Boolean"
+    },
+    {
+      "fieldName": "activeAlertPeriod",
+      "fieldType": "AlertPeriod",
+      "fieldValues": "Daily,Weekly,Monthly,Yearly"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "simManagement",
+  "name": "ActiveAlert",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dial",
+      "otherEntityRelationshipName": "activeAlert",
+      "relationshipName": "dial",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}

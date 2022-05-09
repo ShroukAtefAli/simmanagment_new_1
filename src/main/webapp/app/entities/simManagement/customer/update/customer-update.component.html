@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-customer-heading"
+        data-cy="CustomerCreateUpdateHeading"
+        jhiTranslate="simManagementApp.simManagementCustomer.home.createOrEditLabel"
+      >
+        Create or edit a Customer
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.customerName" for="field_customerName"
+            >Customer Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="customerName"
+            id="field_customerName"
+            data-cy="customerName"
+            formControlName="customerName"
+          />
+          <div
+            *ngIf="editForm.get('customerName')!.invalid && (editForm.get('customerName')!.dirty || editForm.get('customerName')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('customerName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.customerId" for="field_customerId"
+            >Customer Id</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="customerId"
+            id="field_customerId"
+            data-cy="customerId"
+            formControlName="customerId"
+          />
+          <div *ngIf="editForm.get('customerId')!.invalid && (editForm.get('customerId')!.dirty || editForm.get('customerId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('customerId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.contarctId" for="field_contarctId"
+            >Contarct Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="contarctId"
+            id="field_contarctId"
+            data-cy="contarctId"
+            formControlName="contarctId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.customerParent" for="field_customerParent"
+            >Customer Parent</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="customerParent"
+            id="field_customerParent"
+            data-cy="customerParent"
+            formControlName="customerParent"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.dummyContract" for="field_dummyContract"
+            >Dummy Contract</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="dummyContract"
+            id="field_dummyContract"
+            data-cy="dummyContract"
+            formControlName="dummyContract"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.customerIdHight" for="field_customerIdHight"
+            >Customer Id Hight</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="customerIdHight"
+            id="field_customerIdHight"
+            data-cy="customerIdHight"
+            formControlName="customerIdHight"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementCustomer.customerCode" for="field_customerCode"
+            >Customer Code</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="customerCode"
+            id="field_customerCode"
+            data-cy="customerCode"
+            formControlName="customerCode"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

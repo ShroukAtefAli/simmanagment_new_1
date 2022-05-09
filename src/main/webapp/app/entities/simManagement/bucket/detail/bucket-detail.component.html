@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="bucket">
+      <h2 data-cy="bucketDetailsHeading"><span jhiTranslate="simManagementApp.simManagementBucket.detail.title">Bucket</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ bucket.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.bucketId">Bucket Id</span></dt>
+        <dd>
+          <span>{{ bucket.bucketId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.bucketName">Bucket Name</span></dt>
+        <dd>
+          <span>{{ bucket.bucketName }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.bucketCapacity">Bucket Capacity</span></dt>
+        <dd>
+          <span>{{ bucket.bucketCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.bucketType">Bucket Type</span></dt>
+        <dd>
+          <span>{{ bucket.bucketType }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.bucketDescription">Bucket Description</span></dt>
+        <dd>
+          <span>{{ bucket.bucketDescription }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.ratePlan">Rate Plan</span></dt>
+        <dd>
+          <span>{{ bucket.ratePlan }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementBucket.customer">Customer</span></dt>
+        <dd>
+          <div *ngIf="bucket.customer">
+            <a [routerLink]="['/customer', bucket.customer?.id, 'view']">{{ bucket.customer?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/simmanagement/bucket', bucket.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

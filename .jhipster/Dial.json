@@ -1,0 +1,90 @@
+{
+  "applications": "*",
+  "changelogDate": "20220509131721",
+  "clientRootFolder": "simManagement",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "dial",
+  "fields": [
+    {
+      "fieldName": "dialId",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "dial",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "activeAlertId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "dialConsumption",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "bucketId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "bucketdate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "contractStatus",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contractDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "simNum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "volStatusFlag",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apnName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "softDisconnect",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "billCycle",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "m2mMonitoringService",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "simManagement",
+  "name": "Dial",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "activeAlert",
+      "otherEntityRelationshipName": "dial",
+      "relationshipName": "activeAlert",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "customer",
+      "otherEntityRelationshipName": "dial",
+      "relationshipName": "customer",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "no"
+}
