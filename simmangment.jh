@@ -1,0 +1,100 @@
+entity Customer { 
+    customerName String required,
+    customerId UUID required unique,
+    contarctId Long,
+    customerParent String,
+    dummyContract Long,
+    customerIdHight Long,
+    customerCode String
+}
+
+entity Dial {
+   dialId UUID required unique,
+   dial String required,
+   customerId Long,
+   activeAlertId Long,
+   dialConsumption Long,
+   bucketId Long,
+   bucketdate Date,
+   contractStatus Char,
+   contractDate Date,
+   simNum String,
+   volStatusFlag Char,
+   apnName String,
+   softDisconnect Char,
+   billCycle Number,
+   m2mMonitoringService String
+   }
+
+entity Role{
+	roleId UUID required unique,
+    roleName String required
+    }
+    
+entity User{
+	userId UUID required unique,
+    customerId Long required,
+    userName String required,
+    userPassword String required,
+    userRoleId Long required,
+    userEmail String required,
+    userDial Long required,
+    roleId Long required
+    }
+entity Bucket{
+    bucketId UUID required unique,
+    bucketName String required,
+    bucketCapacity Long required,
+    bucketType String required,
+    bucketDescription String,
+    ratePlan String,
+    }
+
+entity Alert{
+    alertId UUID required unique,
+    alertName String required,
+    alertCapacity Long required,
+    alertSmsMessage String,
+    alertEmailMessage String,
+    alertSmsMessageActive Boolean,
+    alertEmailMessageActive Boolean,
+    alertPeriod AlertPeriod,
+}
+entity ActiveAlert{
+    activeAlertId UUID required unique,
+    activeAlertId Long required,
+    activeAlertName String required,
+    activeAlertCapacity Long required,
+    activeAlertCustomerId Long required,
+    activeAlertDialNumber Long required,
+    activeAlertSmsMessage String,
+    activeAlertEmailMessage String,
+    activeAlertSmsMessageActive Boolean,
+    activeAlertEmailMessageActive Boolean,
+    activeAlertPeriod AlertPeriod,
+    }
+enum AlertPeriod{
+    Daily,
+    Weekly,
+    Monthly,
+    Yearly
+ }
+relationship OneToMany {
+	Customer to Dial{CustomerDials},
+    Customer to Bucket{CustomerBuckets},
+    Customer to User{CustomerUsers}
+}
+
+relationship OneToOne {
+	Role to User{userRole}
+}
+
+relationship ManyToOne{
+    User to Role{userRole}
+}
+relationship ManyToMany {
+	Bucket{CustomerBuckets} to Customer{bucketsCustomers}
+}
+relationship OneToMany {
+	Dial to ActiveAlert{dialActiveAlerts}
+}
