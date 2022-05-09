@@ -1,0 +1,78 @@
+entity Customer { 
+    customerName String required,
+    customerId UUID required unique,
+    contarctId Long,
+    customerParent String,
+    dummyContract Long,
+    customerIdHight Long,
+    customerCode String
+}
+
+entity Dial {
+   dialId UUID required unique,
+   dial String required,
+
+   activeAlertId Long
+   dialConsumption Long,
+   bucketId Long,
+   bucketdate LocalDate,
+   contractStatus String,
+   contractDate LocalDate,
+   simNum String,
+   volStatusFlag String,
+   apnName String,
+   softDisconnect String,
+   billCycle Integer,
+   m2mMonitoringService String
+   }
+
+entity Bucket{
+    bucketId UUID required unique,
+    customerId Long,
+    bucketName String required,
+    bucketCapacity Long required,
+    bucketType String required,
+    bucketDescription String,
+    ratePlan String,
+    }
+
+entity Alert{
+    alertId UUID required unique,
+    alertName String required,
+    alertCapacity Long required,
+    alertSmsMessage String,
+    alertEmailMessage String,
+    alertSmsMessageActive Boolean,
+    alertEmailMessageActive Boolean,
+    alertPeriod AlertPeriod,
+}
+entity ActiveAlert{
+    activeAlertId UUID required unique,
+    activeAlertId Long required,
+    activeAlertName String required,
+    activeAlertCapacity Long required,
+    activeAlertCustomerId Long required,
+    activeAlertDialNumber Long required,
+    activeAlertSmsMessage String,
+    activeAlertEmailMessage String,
+    activeAlertSmsMessageActive Boolean,
+    activeAlertEmailMessageActive Boolean,
+    activeAlertPeriod AlertPeriod,
+    }
+enum AlertPeriod{
+    Daily,
+    Weekly,
+    Monthly,
+    Yearly
+ }
+relationship OneToMany {
+	Customer to Dial  ,
+    Customer to Bucket
+}
+
+relationship ManyToMany {
+	Bucket to Customer
+}
+relationship OneToMany {
+	Dial to ActiveAlert
+}
