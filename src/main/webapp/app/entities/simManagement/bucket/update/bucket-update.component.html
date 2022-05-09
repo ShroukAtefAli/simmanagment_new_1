@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-bucket-heading"
+        data-cy="BucketCreateUpdateHeading"
+        jhiTranslate="simManagementApp.simManagementBucket.home.createOrEditLabel"
+      >
+        Create or edit a Bucket
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.bucketId" for="field_bucketId">Bucket Id</label>
+          <input type="text" class="form-control" name="bucketId" id="field_bucketId" data-cy="bucketId" formControlName="bucketId" />
+          <div *ngIf="editForm.get('bucketId')!.invalid && (editForm.get('bucketId')!.dirty || editForm.get('bucketId')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bucketId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.bucketName" for="field_bucketName"
+            >Bucket Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bucketName"
+            id="field_bucketName"
+            data-cy="bucketName"
+            formControlName="bucketName"
+          />
+          <div *ngIf="editForm.get('bucketName')!.invalid && (editForm.get('bucketName')!.dirty || editForm.get('bucketName')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bucketName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.bucketCapacity" for="field_bucketCapacity"
+            >Bucket Capacity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bucketCapacity"
+            id="field_bucketCapacity"
+            data-cy="bucketCapacity"
+            formControlName="bucketCapacity"
+          />
+          <div
+            *ngIf="
+              editForm.get('bucketCapacity')!.invalid && (editForm.get('bucketCapacity')!.dirty || editForm.get('bucketCapacity')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bucketCapacity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('bucketCapacity')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.bucketType" for="field_bucketType"
+            >Bucket Type</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bucketType"
+            id="field_bucketType"
+            data-cy="bucketType"
+            formControlName="bucketType"
+          />
+          <div *ngIf="editForm.get('bucketType')!.invalid && (editForm.get('bucketType')!.dirty || editForm.get('bucketType')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bucketType')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.bucketDescription" for="field_bucketDescription"
+            >Bucket Description</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="bucketDescription"
+            id="field_bucketDescription"
+            data-cy="bucketDescription"
+            formControlName="bucketDescription"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.ratePlan" for="field_ratePlan">Rate Plan</label>
+          <input type="text" class="form-control" name="ratePlan" id="field_ratePlan" data-cy="ratePlan" formControlName="ratePlan" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementBucket.customer" for="field_customer">Customer</label>
+          <select class="form-control" id="field_customer" data-cy="customer" name="customer" formControlName="customer">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="customerOption.id === editForm.get('customer')!.value?.id ? editForm.get('customer')!.value : customerOption"
+              *ngFor="let customerOption of customersSharedCollection; trackBy: trackCustomerById"
+            >
+              {{ customerOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

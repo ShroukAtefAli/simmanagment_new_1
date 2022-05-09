@@ -1,0 +1,94 @@
+<div>
+  <h2 id="page-heading" data-cy="BucketHeading">
+    <span jhiTranslate="simManagementApp.simManagementBucket.home.title">Buckets</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="simManagementApp.simManagementBucket.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-bucket"
+        [routerLink]="['/simmanagement/bucket/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="simManagementApp.simManagementBucket.home.createLabel"> Create a new Bucket </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="buckets?.length === 0">
+    <span jhiTranslate="simManagementApp.simManagementBucket.home.notFound">No buckets found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="buckets && buckets.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.bucketId">Bucket Id</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.bucketName">Bucket Name</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.bucketCapacity">Bucket Capacity</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.bucketType">Bucket Type</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.bucketDescription">Bucket Description</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.ratePlan">Rate Plan</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementBucket.customer">Customer</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bucket of buckets; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/simmanagement/bucket', bucket.id, 'view']">{{ bucket.id }}</a>
+          </td>
+          <td>{{ bucket.bucketId }}</td>
+          <td>{{ bucket.bucketName }}</td>
+          <td>{{ bucket.bucketCapacity }}</td>
+          <td>{{ bucket.bucketType }}</td>
+          <td>{{ bucket.bucketDescription }}</td>
+          <td>{{ bucket.ratePlan }}</td>
+          <td>
+            <div *ngIf="bucket.customer">
+              <a [routerLink]="['/customer', bucket.customer?.id, 'view']">{{ bucket.customer?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/simmanagement/bucket', bucket.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/simmanagement/bucket', bucket.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(bucket)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

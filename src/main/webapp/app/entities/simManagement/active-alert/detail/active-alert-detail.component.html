@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="activeAlert">
+      <h2 data-cy="activeAlertDetailsHeading">
+        <span jhiTranslate="simManagementApp.simManagementActiveAlert.detail.title">Active Alert</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ activeAlert.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertId">Active Alert Id</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertName">Active Alert Name</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertName }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertCapacity">Active Alert Capacity</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertCustomerId">Active Alert Customer Id</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertCustomerId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertDialNumber">Active Alert Dial Number</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertDialNumber }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertSmsMessage">Active Alert Sms Message</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertSmsMessage }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertEmailMessage">Active Alert Email Message</span></dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertEmailMessage }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertSmsMessageActive">Active Alert Sms Message Active</span>
+        </dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertSmsMessageActive }}</span>
+        </dd>
+        <dt>
+          <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertEmailMessageActive"
+            >Active Alert Email Message Active</span
+          >
+        </dt>
+        <dd>
+          <span>{{ activeAlert.activeAlertEmailMessageActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertPeriod">Active Alert Period</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'simManagementApp.AlertPeriod.' + activeAlert.activeAlertPeriod }}">{{
+            activeAlert.activeAlertPeriod
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementActiveAlert.dial">Dial</span></dt>
+        <dd>
+          <div *ngIf="activeAlert.dial">
+            <a [routerLink]="['/dial', activeAlert.dial?.id, 'view']">{{ activeAlert.dial?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/simmanagement/active-alert', activeAlert.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="customer">
+      <h2 data-cy="customerDetailsHeading"><span jhiTranslate="simManagementApp.simManagementCustomer.detail.title">Customer</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ customer.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.customerName">Customer Name</span></dt>
+        <dd>
+          <span>{{ customer.customerName }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.customerId">Customer Id</span></dt>
+        <dd>
+          <span>{{ customer.customerId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.contarctId">Contarct Id</span></dt>
+        <dd>
+          <span>{{ customer.contarctId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.customerParent">Customer Parent</span></dt>
+        <dd>
+          <span>{{ customer.customerParent }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.dummyContract">Dummy Contract</span></dt>
+        <dd>
+          <span>{{ customer.dummyContract }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.customerIdHight">Customer Id Hight</span></dt>
+        <dd>
+          <span>{{ customer.customerIdHight }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementCustomer.customerCode">Customer Code</span></dt>
+        <dd>
+          <span>{{ customer.customerCode }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/simmanagement/customer', customer.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

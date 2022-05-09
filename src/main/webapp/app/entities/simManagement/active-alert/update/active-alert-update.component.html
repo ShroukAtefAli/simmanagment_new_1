@@ -1,0 +1,313 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-active-alert-heading"
+        data-cy="ActiveAlertCreateUpdateHeading"
+        jhiTranslate="simManagementApp.simManagementActiveAlert.home.createOrEditLabel"
+      >
+        Create or edit a Active Alert
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertId" for="field_activeAlertId"
+            >Active Alert Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activeAlertId"
+            id="field_activeAlertId"
+            data-cy="activeAlertId"
+            formControlName="activeAlertId"
+          />
+          <div
+            *ngIf="
+              editForm.get('activeAlertId')!.invalid && (editForm.get('activeAlertId')!.dirty || editForm.get('activeAlertId')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activeAlertId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('activeAlertId')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertName" for="field_activeAlertName"
+            >Active Alert Name</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="activeAlertName"
+            id="field_activeAlertName"
+            data-cy="activeAlertName"
+            formControlName="activeAlertName"
+          />
+          <div
+            *ngIf="
+              editForm.get('activeAlertName')!.invalid &&
+              (editForm.get('activeAlertName')!.dirty || editForm.get('activeAlertName')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activeAlertName')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertCapacity"
+            for="field_activeAlertCapacity"
+            >Active Alert Capacity</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activeAlertCapacity"
+            id="field_activeAlertCapacity"
+            data-cy="activeAlertCapacity"
+            formControlName="activeAlertCapacity"
+          />
+          <div
+            *ngIf="
+              editForm.get('activeAlertCapacity')!.invalid &&
+              (editForm.get('activeAlertCapacity')!.dirty || editForm.get('activeAlertCapacity')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activeAlertCapacity')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('activeAlertCapacity')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertCustomerId"
+            for="field_activeAlertCustomerId"
+            >Active Alert Customer Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activeAlertCustomerId"
+            id="field_activeAlertCustomerId"
+            data-cy="activeAlertCustomerId"
+            formControlName="activeAlertCustomerId"
+          />
+          <div
+            *ngIf="
+              editForm.get('activeAlertCustomerId')!.invalid &&
+              (editForm.get('activeAlertCustomerId')!.dirty || editForm.get('activeAlertCustomerId')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activeAlertCustomerId')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('activeAlertCustomerId')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertDialNumber"
+            for="field_activeAlertDialNumber"
+            >Active Alert Dial Number</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activeAlertDialNumber"
+            id="field_activeAlertDialNumber"
+            data-cy="activeAlertDialNumber"
+            formControlName="activeAlertDialNumber"
+          />
+          <div
+            *ngIf="
+              editForm.get('activeAlertDialNumber')!.invalid &&
+              (editForm.get('activeAlertDialNumber')!.dirty || editForm.get('activeAlertDialNumber')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('activeAlertDialNumber')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('activeAlertDialNumber')?.errors?.number"
+              jhiTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertSmsMessage"
+            for="field_activeAlertSmsMessage"
+            >Active Alert Sms Message</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="activeAlertSmsMessage"
+            id="field_activeAlertSmsMessage"
+            data-cy="activeAlertSmsMessage"
+            formControlName="activeAlertSmsMessage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertEmailMessage"
+            for="field_activeAlertEmailMessage"
+            >Active Alert Email Message</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="activeAlertEmailMessage"
+            id="field_activeAlertEmailMessage"
+            data-cy="activeAlertEmailMessage"
+            formControlName="activeAlertEmailMessage"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertSmsMessageActive"
+            for="field_activeAlertSmsMessageActive"
+            >Active Alert Sms Message Active</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="activeAlertSmsMessageActive"
+            id="field_activeAlertSmsMessageActive"
+            data-cy="activeAlertSmsMessageActive"
+            formControlName="activeAlertSmsMessageActive"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertEmailMessageActive"
+            for="field_activeAlertEmailMessageActive"
+            >Active Alert Email Message Active</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="activeAlertEmailMessageActive"
+            id="field_activeAlertEmailMessageActive"
+            data-cy="activeAlertEmailMessageActive"
+            formControlName="activeAlertEmailMessageActive"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertPeriod" for="field_activeAlertPeriod"
+            >Active Alert Period</label
+          >
+          <select
+            class="form-control"
+            name="activeAlertPeriod"
+            formControlName="activeAlertPeriod"
+            id="field_activeAlertPeriod"
+            data-cy="activeAlertPeriod"
+          >
+            <option [ngValue]="null">{{ 'simManagementApp.AlertPeriod.null' | translate }}</option>
+            <option *ngFor="let alertPeriod of alertPeriodValues" [value]="alertPeriod">
+              {{ 'simManagementApp.AlertPeriod.' + alertPeriod | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementActiveAlert.dial" for="field_dial">Dial</label>
+          <select class="form-control" id="field_dial" data-cy="dial" name="dial" formControlName="dial">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="dialOption.id === editForm.get('dial')!.value?.id ? editForm.get('dial')!.value : dialOption"
+              *ngFor="let dialOption of dialsSharedCollection; trackBy: trackDialById"
+            >
+              {{ dialOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

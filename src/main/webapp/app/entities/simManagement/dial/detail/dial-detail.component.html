@@ -1,0 +1,90 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dial">
+      <h2 data-cy="dialDetailsHeading"><span jhiTranslate="simManagementApp.simManagementDial.detail.title">Dial</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dial.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.dialId">Dial Id</span></dt>
+        <dd>
+          <span>{{ dial.dialId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.dial">Dial</span></dt>
+        <dd>
+          <span>{{ dial.dial }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.activeAlertId">Active Alert Id</span></dt>
+        <dd>
+          <span>{{ dial.activeAlertId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.dialConsumption">Dial Consumption</span></dt>
+        <dd>
+          <span>{{ dial.dialConsumption }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.bucketId">Bucket Id</span></dt>
+        <dd>
+          <span>{{ dial.bucketId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.bucketdate">Bucketdate</span></dt>
+        <dd>
+          <span>{{ dial.bucketdate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.contractStatus">Contract Status</span></dt>
+        <dd>
+          <span>{{ dial.contractStatus }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.contractDate">Contract Date</span></dt>
+        <dd>
+          <span>{{ dial.contractDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.simNum">Sim Num</span></dt>
+        <dd>
+          <span>{{ dial.simNum }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.volStatusFlag">Vol Status Flag</span></dt>
+        <dd>
+          <span>{{ dial.volStatusFlag }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.apnName">Apn Name</span></dt>
+        <dd>
+          <span>{{ dial.apnName }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.softDisconnect">Soft Disconnect</span></dt>
+        <dd>
+          <span>{{ dial.softDisconnect }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.billCycle">Bill Cycle</span></dt>
+        <dd>
+          <span>{{ dial.billCycle }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.m2mMonitoringService">M 2 M Monitoring Service</span></dt>
+        <dd>
+          <span>{{ dial.m2mMonitoringService }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementDial.customer">Customer</span></dt>
+        <dd>
+          <div *ngIf="dial.customer">
+            <a [routerLink]="['/customer', dial.customer?.id, 'view']">{{ dial.customer?.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/simmanagement/dial', dial.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

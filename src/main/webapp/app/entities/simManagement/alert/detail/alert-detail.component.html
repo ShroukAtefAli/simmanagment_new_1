@@ -1,0 +1,60 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="alert">
+      <h2 data-cy="alertDetailsHeading"><span jhiTranslate="simManagementApp.simManagementAlert.detail.title">Alert</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ alert.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertId">Alert Id</span></dt>
+        <dd>
+          <span>{{ alert.alertId }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertName">Alert Name</span></dt>
+        <dd>
+          <span>{{ alert.alertName }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertCapacity">Alert Capacity</span></dt>
+        <dd>
+          <span>{{ alert.alertCapacity }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertSmsMessage">Alert Sms Message</span></dt>
+        <dd>
+          <span>{{ alert.alertSmsMessage }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertEmailMessage">Alert Email Message</span></dt>
+        <dd>
+          <span>{{ alert.alertEmailMessage }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertSmsMessageActive">Alert Sms Message Active</span></dt>
+        <dd>
+          <span>{{ alert.alertSmsMessageActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertEmailMessageActive">Alert Email Message Active</span></dt>
+        <dd>
+          <span>{{ alert.alertEmailMessageActive }}</span>
+        </dd>
+        <dt><span jhiTranslate="simManagementApp.simManagementAlert.alertPeriod">Alert Period</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'simManagementApp.AlertPeriod.' + alert.alertPeriod }}">{{ alert.alertPeriod }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/simmanagement/alert', alert.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

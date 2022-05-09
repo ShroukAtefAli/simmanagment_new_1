@@ -1,0 +1,62 @@
+{
+  "applications": "*",
+  "changelogDate": "20220509131720",
+  "clientRootFolder": "simManagement",
+  "databaseType": "sql",
+  "dto": "no",
+  "embedded": false,
+  "entityTableName": "customer",
+  "fields": [
+    {
+      "fieldName": "customerName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "customerId",
+      "fieldType": "UUID",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "contarctId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerParent",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dummyContract",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerIdHight",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "customerCode",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "microserviceName": "simManagement",
+  "name": "Customer",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "dial",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "dial",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "bucket",
+      "otherEntityRelationshipName": "customer",
+      "relationshipName": "bucket",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "service": "no"
+}

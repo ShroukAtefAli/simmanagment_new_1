@@ -1,0 +1,209 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-dial-heading" data-cy="DialCreateUpdateHeading" jhiTranslate="simManagementApp.simManagementDial.home.createOrEditLabel">
+        Create or edit a Dial
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="row mb-3" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.dialId" for="field_dialId">Dial Id</label>
+          <input type="text" class="form-control" name="dialId" id="field_dialId" data-cy="dialId" formControlName="dialId" />
+          <div *ngIf="editForm.get('dialId')!.invalid && (editForm.get('dialId')!.dirty || editForm.get('dialId')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('dialId')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.dial" for="field_dial">Dial</label>
+          <input type="text" class="form-control" name="dial" id="field_dial" data-cy="dial" formControlName="dial" />
+          <div *ngIf="editForm.get('dial')!.invalid && (editForm.get('dial')!.dirty || editForm.get('dial')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('dial')?.errors?.required" jhiTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.activeAlertId" for="field_activeAlertId"
+            >Active Alert Id</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="activeAlertId"
+            id="field_activeAlertId"
+            data-cy="activeAlertId"
+            formControlName="activeAlertId"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.dialConsumption" for="field_dialConsumption"
+            >Dial Consumption</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="dialConsumption"
+            id="field_dialConsumption"
+            data-cy="dialConsumption"
+            formControlName="dialConsumption"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.bucketId" for="field_bucketId">Bucket Id</label>
+          <input type="number" class="form-control" name="bucketId" id="field_bucketId" data-cy="bucketId" formControlName="bucketId" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.bucketdate" for="field_bucketdate">Bucketdate</label>
+          <div class="input-group">
+            <input
+              id="field_bucketdate"
+              data-cy="bucketdate"
+              type="text"
+              class="form-control"
+              name="bucketdate"
+              ngbDatepicker
+              #bucketdateDp="ngbDatepicker"
+              formControlName="bucketdate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="bucketdateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.contractStatus" for="field_contractStatus"
+            >Contract Status</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="contractStatus"
+            id="field_contractStatus"
+            data-cy="contractStatus"
+            formControlName="contractStatus"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.contractDate" for="field_contractDate"
+            >Contract Date</label
+          >
+          <div class="input-group">
+            <input
+              id="field_contractDate"
+              data-cy="contractDate"
+              type="text"
+              class="form-control"
+              name="contractDate"
+              ngbDatepicker
+              #contractDateDp="ngbDatepicker"
+              formControlName="contractDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="contractDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.simNum" for="field_simNum">Sim Num</label>
+          <input type="text" class="form-control" name="simNum" id="field_simNum" data-cy="simNum" formControlName="simNum" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.volStatusFlag" for="field_volStatusFlag"
+            >Vol Status Flag</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="volStatusFlag"
+            id="field_volStatusFlag"
+            data-cy="volStatusFlag"
+            formControlName="volStatusFlag"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.apnName" for="field_apnName">Apn Name</label>
+          <input type="text" class="form-control" name="apnName" id="field_apnName" data-cy="apnName" formControlName="apnName" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.softDisconnect" for="field_softDisconnect"
+            >Soft Disconnect</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="softDisconnect"
+            id="field_softDisconnect"
+            data-cy="softDisconnect"
+            formControlName="softDisconnect"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.billCycle" for="field_billCycle">Bill Cycle</label>
+          <input type="number" class="form-control" name="billCycle" id="field_billCycle" data-cy="billCycle" formControlName="billCycle" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.m2mMonitoringService" for="field_m2mMonitoringService"
+            >M 2 M Monitoring Service</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="m2mMonitoringService"
+            id="field_m2mMonitoringService"
+            data-cy="m2mMonitoringService"
+            formControlName="m2mMonitoringService"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" jhiTranslate="simManagementApp.simManagementDial.customer" for="field_customer">Customer</label>
+          <select class="form-control" id="field_customer" data-cy="customer" name="customer" formControlName="customer">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="customerOption.id === editForm.get('customer')!.value?.id ? editForm.get('customer')!.value : customerOption"
+              *ngFor="let customerOption of customersSharedCollection; trackBy: trackCustomerById"
+            >
+              {{ customerOption.id }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{
+  "simManagementApp": {
+    "simManagementDial": {
+      "home": {
+        "title": "Dials",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Dial",
+        "createOrEditLabel": "Create or edit a Dial",
+        "notFound": "No Dials found"
+      },
+      "created": "A new Dial is created with identifier {{ param }}",
+      "updated": "A Dial is updated with identifier {{ param }}",
+      "deleted": "A Dial is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Dial {{ id }}?"
+      },
+      "detail": {
+        "title": "Dial"
+      },
+      "id": "ID",
+      "dialId": "Dial Id",
+      "dial": "Dial",
+      "activeAlertId": "Active Alert Id",
+      "dialConsumption": "Dial Consumption",
+      "bucketId": "Bucket Id",
+      "bucketdate": "Bucketdate",
+      "contractStatus": "Contract Status",
+      "contractDate": "Contract Date",
+      "simNum": "Sim Num",
+      "volStatusFlag": "Vol Status Flag",
+      "apnName": "Apn Name",
+      "softDisconnect": "Soft Disconnect",
+      "billCycle": "Bill Cycle",
+      "m2mMonitoringService": "M 2 M Monitoring Service",
+      "activeAlert": "Active Alert",
+      "customer": "Customer"
+    }
+  }
+}

@@ -1,0 +1,120 @@
+<div>
+  <h2 id="page-heading" data-cy="ActiveAlertHeading">
+    <span jhiTranslate="simManagementApp.simManagementActiveAlert.home.title">Active Alerts</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="simManagementApp.simManagementActiveAlert.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-active-alert"
+        [routerLink]="['/simmanagement/active-alert/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="simManagementApp.simManagementActiveAlert.home.createLabel"> Create a new Active Alert </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="activeAlerts?.length === 0">
+    <span jhiTranslate="simManagementApp.simManagementActiveAlert.home.notFound">No activeAlerts found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="activeAlerts && activeAlerts.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertId">Active Alert Id</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertName">Active Alert Name</span></th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertCapacity">Active Alert Capacity</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertCustomerId">Active Alert Customer Id</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertDialNumber">Active Alert Dial Number</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertSmsMessage">Active Alert Sms Message</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertEmailMessage">Active Alert Email Message</span>
+          </th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertSmsMessageActive"
+              >Active Alert Sms Message Active</span
+            >
+          </th>
+          <th scope="col">
+            <span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertEmailMessageActive"
+              >Active Alert Email Message Active</span
+            >
+          </th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementActiveAlert.activeAlertPeriod">Active Alert Period</span></th>
+          <th scope="col"><span jhiTranslate="simManagementApp.simManagementActiveAlert.dial">Dial</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activeAlert of activeAlerts; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/simmanagement/active-alert', activeAlert.id, 'view']">{{ activeAlert.id }}</a>
+          </td>
+          <td>{{ activeAlert.activeAlertId }}</td>
+          <td>{{ activeAlert.activeAlertName }}</td>
+          <td>{{ activeAlert.activeAlertCapacity }}</td>
+          <td>{{ activeAlert.activeAlertCustomerId }}</td>
+          <td>{{ activeAlert.activeAlertDialNumber }}</td>
+          <td>{{ activeAlert.activeAlertSmsMessage }}</td>
+          <td>{{ activeAlert.activeAlertEmailMessage }}</td>
+          <td>{{ activeAlert.activeAlertSmsMessageActive }}</td>
+          <td>{{ activeAlert.activeAlertEmailMessageActive }}</td>
+          <td jhiTranslate="{{ 'simManagementApp.AlertPeriod.' + activeAlert.activeAlertPeriod }}">{{ activeAlert.activeAlertPeriod }}</td>
+          <td>
+            <div *ngIf="activeAlert.dial">
+              <a [routerLink]="['/dial', activeAlert.dial?.id, 'view']">{{ activeAlert.dial?.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/simmanagement/active-alert', activeAlert.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/simmanagement/active-alert', activeAlert.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(activeAlert)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
